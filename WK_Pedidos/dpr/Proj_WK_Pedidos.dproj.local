@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/08/24 09:18:13.000.787,=C:\Users\leofr\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/08/24 09:25:40.000.590,=C:\Users\leofr\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/08/24 09:27:26.000.719,C:\#Leo\Projetos\Delphi\WK_Pedidos\pas\UMain.dfm=C:\Users\leofr\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2022/08/24 09:27:26.000.719,C:\#Leo\Projetos\Delphi\WK_Pedidos\pas\UMain.pas=C:\Users\leofr\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/08/24 09:27:57.000.487,C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Proj_WK_Pedidos.dproj=C:\Users\leofr\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2022/08/24 09:34:41.000.609,=C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.pas</Transaction>
+    <Transaction>2022/08/24 09:35:07.000.022,C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.pas=C:\#Leo\Projetos\Delphi\WK_Pedidos\pas\UDM.pas</Transaction>
+    <Transaction>2022/08/24 09:35:07.000.022,C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.dfm=C:\#Leo\Projetos\Delphi\WK_Pedidos\pas\UDM.dfm</Transaction>
+    <Transaction>2022/08/24 10:19:09.000.693,=C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.pas</Transaction>
+    <Transaction>2022/08/24 10:19:30.000.218,C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.pas=C:\#Leo\Projetos\Delphi\WK_Pedidos\pas\ULib.pas</Transaction>
+    <Transaction>2022/08/24 10:29:27.000.786,=C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.pas</Transaction>
+    <Transaction>2022/08/24 10:33:52.000.821,C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.pas=C:\#Leo\Projetos\Delphi\WK_Pedidos\model\UTProduto.pas</Transaction>
+    <Transaction>2022/08/24 10:33:58.000.674,=C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.pas</Transaction>
+    <Transaction>2022/08/24 10:34:15.000.179,C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.pas=C:\#Leo\Projetos\Delphi\WK_Pedidos\model\UTCliente.pas</Transaction>
+    <Transaction>2022/08/24 10:38:23.000.512,=C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.pas</Transaction>
+    <Transaction>2022/08/24 10:43:23.000.953,C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.pas=C:\#Leo\Projetos\Delphi\WK_Pedidos\model\UTPedido.pas</Transaction>
+    <Transaction>2022/08/24 10:43:44.000.203,=C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.pas</Transaction>
+    <Transaction>2022/08/24 10:47:53.000.354,C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.pas=C:\#Leo\Projetos\Delphi\WK_Pedidos\model\UTPedidoProduto.pas</Transaction>
+    <Transaction>2022/08/24 12:16:43.000.949,=C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.pas</Transaction>
+    <Transaction>2022/08/24 12:17:29.000.877,C:\#Leo\Projetos\Delphi\WK_Pedidos\pas\UCadPedido.pas=C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.pas</Transaction>
+    <Transaction>2022/08/24 12:17:29.000.877,C:\#Leo\Projetos\Delphi\WK_Pedidos\pas\UCadPedido.dfm=C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.dfm</Transaction>
+    <Transaction>2022/08/24 14:48:30.839,=C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.pas</Transaction>
+    <Transaction>2022/08/24 14:49:41.977,C:\#Leo\Projetos\Delphi\WK_Pedidos\dao\UTPedidoDAO.pas=C:\#Leo\Projetos\Delphi\WK_Pedidos\dpr\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
