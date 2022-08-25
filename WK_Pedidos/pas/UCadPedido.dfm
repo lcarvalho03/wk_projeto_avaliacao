@@ -283,18 +283,17 @@ object FrmCadPedido: TFrmCadPedido
         Text = 
           'Software para avalia'#231#227'o do profissional Leonardo Freitas de Carv' +
           'alho'
-        Width = 450
+        Width = 420
       end
       item
-        Text = 'Vers'#227'o 2.1.1'
+        Text = 'Vers'#227'o 2.1.2'
         Width = 100
       end
       item
-        Alignment = taRightJustify
+        Alignment = taCenter
         Text = '  Valor Total do Pedido: 0,00'
         Width = 50
       end>
-    ExplicitTop = 504
   end
   object DataSourceProdutos: TDataSource
     DataSet = FDMemTableProdutos

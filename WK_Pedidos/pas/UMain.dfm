@@ -254,7 +254,7 @@ object FrmMain: TFrmMain
         Width = 850
       end
       item
-        Text = 'Vers'#227'o 2.1.1'
+        Text = 'Vers'#227'o 2.1.2'
         Width = 50
       end>
     ExplicitTop = 631
