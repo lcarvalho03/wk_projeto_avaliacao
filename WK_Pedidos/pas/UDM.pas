@@ -8,13 +8,15 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.PG,
   FireDAC.Phys.PGDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
-  FireDAC.Comp.DataSet, UTCliente, UTProduto, System.Generics.Collections;
+  FireDAC.Comp.DataSet, UTCliente, UTProduto, System.Generics.Collections, FireDAC.Phys.MySQL, FireDAC.Phys.MySQLDef;
 
 type
   TDM = class(TDataModule)
     fdqQuery: TFDQuery;
     FDConnection: TFDConnection;
     FDPhysPgDriverLink1: TFDPhysPgDriverLink;
+    FDConnection2: TFDConnection;
+    FDPhysMySQLDriverLink2: TFDPhysMySQLDriverLink;
     procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
@@ -51,6 +53,8 @@ begin
   FDConnection.Params.Values['server']   := LerIniConexao('Server', 'Servidor');
   FDConnection.Params.Values['port']     := LerIniConexao('Port', 'Porta');
 
+  //FDConnection2.Connected := True;
+
   try
     FDConnection.Connected := True;
 
@@ -64,6 +68,8 @@ begin
     Application.MessageBox(PWideChar('Falha ao tentar conectar o servidor de banco de dados!'), 'Conexão', MB_ICONERROR);
     Application.Terminate;
   end;
+
+
 end;
 
 function TDM.LerIniConexao(sSecao, sVariavel: string): string;

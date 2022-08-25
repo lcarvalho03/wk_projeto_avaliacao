@@ -7,12 +7,13 @@ uses UDM, UTCliente, UTProduto, FireDAC.Comp.Client, System.Generics.Collections
 var
   fdqQuery: TFDQuery;
 
-function criaObjetoQuery(): TFDQuery;
-function obtemListaDeClientes(): TObjectList<TCliente>;
-function obtemListaDeProdutos(): TObjectList<TProduto>;
+function CriaObjetoQuery(): TFDQuery;
+function ObtemListaDeClientes(): TObjectList<TCliente>;
+function ObtemListaDeProdutos(): TObjectList<TProduto>;
 
-procedure montaComboboxCliente(oCliente: TCliente; cbbCliente: TComboBox; listaDeClientes: TObjectList<TCliente>);
-procedure montaComboboxProduto(oProduto: TProduto; cbbProduto: TComboBox; listaDeProdutos: TObjectList<TProduto>);
+procedure DestroiObjetosDoComboBox(comboBox: TComboBox);
+procedure MontaComboboxCliente(oCliente: TCliente; cbbCliente: TComboBox; listaDeClientes: TObjectList<TCliente>);
+procedure MontaComboboxProduto(oProduto: TProduto; cbbProduto: TComboBox; listaDeProdutos: TObjectList<TProduto>);
 
 
 implementation
@@ -20,18 +21,18 @@ implementation
 uses
   System.SysUtils;
 
-function criaObjetoQuery(): TFDQuery;
+function CriaObjetoQuery(): TFDQuery;
 begin
   Result := TFDQuery.Create(nil);
   Result.Connection := DM.FDConnection;
   Result.SQL.Clear;
 end;
 
-function obtemListaDeClientes(): TObjectList<TCliente>;
+function ObtemListaDeClientes(): TObjectList<TCliente>;
 begin
   fdqQuery := criaObjetoQuery();
   fdqQuery.SQL.Add('select c.id, c.nome, c.cidade, c.uf ' +
-                   'from public.clientes c ' +
+                   'from clientes c ' +
                    'order by c.nome');
   fdqQuery.OpenOrExecute;
 
@@ -55,11 +56,11 @@ begin
   FreeAndNil(fdqQuery);
 end;
 
-function obtemListaDeProdutos(): TObjectList<TProduto>;
+function ObtemListaDeProdutos(): TObjectList<TProduto>;
 begin
   fdqQuery := criaObjetoQuery();
   fdqQuery.SQL.Add('select p.id, p.descricao, p.valor_venda ' +
-                   'from public.produtos p ' +
+                   'from produtos p ' +
                    'order by p.descricao');
   fdqQuery.OpenOrExecute;
 
@@ -82,7 +83,7 @@ begin
   FreeAndNil(fdqQuery);
 end;
 
-procedure montaComboboxCliente(oCliente: TCliente; cbbCliente: TComboBox; listaDeClientes: TObjectList<TCliente>);
+procedure MontaComboboxCliente(oCliente: TCliente; cbbCliente: TComboBox; listaDeClientes: TObjectList<TCliente>);
 begin
   cbbCliente.Items.Clear;
 
@@ -92,7 +93,7 @@ begin
   cbbCliente.ItemIndex := 0;
 end;
 
-procedure montaComboboxProduto(oProduto: TProduto; cbbProduto: TComboBox; listaDeProdutos: TObjectList<TProduto>);
+procedure MontaComboboxProduto(oProduto: TProduto; cbbProduto: TComboBox; listaDeProdutos: TObjectList<TProduto>);
 begin
   cbbProduto.Items.Clear;
 
@@ -102,5 +103,15 @@ begin
   cbbProduto.ItemIndex := 0;
 end;
 
+procedure DestroiObjetosDoComboBox(comboBox: TComboBox);
+var
+  i: Integer;
+begin
+  for I := (comboBox.GetCount - 1) downto 0 do
+    try
+      TObject(comboBox.Items.Objects[i]).Free;
+    except
+    end;
+end;
 
 end.

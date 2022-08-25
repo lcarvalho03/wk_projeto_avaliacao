@@ -11,6 +11,7 @@ object FrmMain: TFrmMain
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
+  OnDestroy = FormDestroy
   OnShow = FormShow
   DesignSize = (
     999

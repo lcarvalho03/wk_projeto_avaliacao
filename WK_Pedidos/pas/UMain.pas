@@ -42,6 +42,7 @@ type
     procedure ComboBoxClienteSelect(Sender: TObject);
     procedure BitBtnSairClick(Sender: TObject);
     procedure BitBtnAdicionarPedidoClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -87,8 +88,8 @@ begin
   FDQueryPedidos.Close;
   FDQueryPedidos.SQL.Clear;
   FDQueryPedidos.SQL.Add('select p.id, p.id_cliente, c.nome, p.dt_emissao, p.valor_total ' +
-                         'from public.pedidos p ' +
-                              'inner join public.clientes c on (p.id_cliente = c.id) ' +
+                         'from pedidos p ' +
+                              'inner join clientes c on (p.id_cliente = c.id) ' +
                          lWhere +
                          ' order by c.nome, p.id');
   FDQueryPedidos.OpenOrExecute;
@@ -102,12 +103,17 @@ begin
   begin
     FDQueryProdutos.SQL.Clear;
     FDQueryProdutos.SQL.Add('select pp.id, pp.id_pedido, pp.id_produto, p.descricao, pp.qtd, pp.valor_unitario, pp.valor_total ' +
-                            'from public.pedidos_produtos pp ' +
-                                 'inner join public.produtos p on (pp.id_produto = p.id) ' +
+                            'from pedidos_produtos pp ' +
+                                 'inner join produtos p on (pp.id_produto = p.id) ' +
                             'where (pp.id_pedido = ' + FDQueryPedidos.FieldByName('id').AsString + ') ' +
                             ' order by p.descricao');
     FDQueryProdutos.OpenOrExecute;
   end;
+end;
+
+procedure TFrmMain.FormDestroy(Sender: TObject);
+begin
+  //DestroiObjetosDoComboBox(ComboBoxCliente);
 end;
 
 procedure TFrmMain.FormShow(Sender: TObject);

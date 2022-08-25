@@ -47,8 +47,8 @@ begin
 
   produtos := criaObjetoQuery();
   produtos.SQL.Add('select pp.id, pp.id_pedido, pp.id_produto, p.descricao, pp.qtd, pp.valor_unitario, pp.valor_total ' +
-                   'from public.pedidos_produtos pp ' +
-                        'inner join public.produtos p on (pp.id_produto = p.id) ' +
+                   'from pedidos_produtos pp ' +
+                        'inner join produtos p on (pp.id_produto = p.id) ' +
                    'where (pp.id_pedido = ' + Trim(IntToStr(id)) + ') ' +
                    'order by p.descricao');
   produtos.OpenOrExecute;

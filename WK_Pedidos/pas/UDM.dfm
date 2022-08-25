@@ -26,4 +26,19 @@ object DM: TDM
     Left = 176
     Top = 24
   end
+  object FDConnection2: TFDConnection
+    Params.Strings = (
+      'DriverID=MySQL'
+      'Database=DB_WK'
+      'Password=123456'
+      'User_Name=root'
+      'CharacterSet=utf8')
+    LoginPrompt = False
+    Left = 136
+    Top = 304
+  end
+  object FDPhysMySQLDriverLink2: TFDPhysMySQLDriverLink
+    Left = 328
+    Top = 304
+  end
 end

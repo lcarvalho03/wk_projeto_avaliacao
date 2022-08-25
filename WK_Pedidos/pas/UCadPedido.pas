@@ -50,12 +50,14 @@ type
     FDMemTableProdutosqtd: TFloatField;
     FDMemTableProdutosvalor_unitario: TCurrencyField;
     FDMemTableProdutosvalor_total: TCurrencyField;
+    StatusBar: TStatusBar;
     procedure BitBtnCancelarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure ComboBoxProdutoSelect(Sender: TObject);
     procedure NumberBoxQtdProdutoChange(Sender: TObject);
     procedure BitBtnInserirProdutoClick(Sender: TObject);
     procedure BitBtnGravarPedidoClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -122,6 +124,7 @@ begin
     FDMemTableProdutos.Post;
 
     NumberBoxPedidoValorTotal.Value := (NumberBoxPedidoValorTotal.Value + NumberBoxProdutoValorTotal.Value);
+    StatusBar.Panels[0].Text := '  Valor Total do Pedido: ' + NumberBoxPedidoValorTotal.CurrencyString + ' ' + FormatFloat('#,##0.00', NumberBoxPedidoValorTotal.Value);
     ComboBoxProduto.ItemIndex := 0;
     NumberBoxQtdProduto.Value := 0;
     ComboBoxProduto.SetFocus;
@@ -151,6 +154,12 @@ begin
   //CalculaValorTotalProduto(NumberBoxQtdProduto.Value, NumberBoxValorUnitario.Value);
   NumberBoxQtdProdutoChange(Sender);
   NumberBoxQtdProduto.SetFocus;
+end;
+
+procedure TFrmCadPedido.FormDestroy(Sender: TObject);
+begin
+  DestroiObjetosDoComboBox(ComboBoxProduto);
+  DestroiObjetosDoComboBox(ComboBoxCliente);
 end;
 
 procedure TFrmCadPedido.FormShow(Sender: TObject);

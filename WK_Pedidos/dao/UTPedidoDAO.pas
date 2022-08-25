@@ -58,7 +58,7 @@ begin
 
   lQueryInsert.Close;
   lQueryInsert.SQL.Clear;
-  lQueryInsert.SQL.Add('insert into public.pedidos (dt_emissao, id_cliente, valor_total) ' +
+  lQueryInsert.SQL.Add('insert into pedidos (dt_emissao, id_cliente, valor_total) ' +
                        'values (:pDtEmissao, :pIdCliente, :pValorTotal) returning id {into :id}');
 
   lQueryInsert.Params.ParamByName('pDtEmissao').AsDateTime := pedido.DtEmissao;
@@ -79,7 +79,7 @@ begin
 
     lQueryInsert.Close;
     lQueryInsert.SQL.Clear;
-    lQueryInsert.SQL.Add('insert into public.pedidos_produtos (id_pedido, id_produto, qtd, valor_unitario, valor_total) ' +
+    lQueryInsert.SQL.Add('insert into pedidos_produtos (id_pedido, id_produto, qtd, valor_unitario, valor_total) ' +
                          'values (:pIdPedido, :pIdProduto, :pQtd, :pValorUnitario, :pValorTotal)');
 
     memTable.recno := 1;

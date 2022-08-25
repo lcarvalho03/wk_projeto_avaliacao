@@ -3,7 +3,7 @@ object FrmCadPedido: TFrmCadPedido
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'Cadastro de Pedido'
-  ClientHeight = 463
+  ClientHeight = 485
   ClientWidth = 785
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,10 +12,11 @@ object FrmCadPedido: TFrmCadPedido
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
+  OnDestroy = FormDestroy
   OnShow = FormShow
   DesignSize = (
     785
-    463)
+    485)
   TextHeight = 15
   object Label1: TLabel
     Left = 16
@@ -63,7 +64,6 @@ object FrmCadPedido: TFrmCadPedido
     Caption = '&Gravar Pedido'
     TabOrder = 5
     OnClick = BitBtnGravarPedidoClick
-    ExplicitLeft = 416
   end
   object BitBtnCancelar: TBitBtn
     Left = 686
@@ -74,7 +74,6 @@ object FrmCadPedido: TFrmCadPedido
     Caption = '&Cancelar'
     TabOrder = 6
     OnClick = BitBtnCancelarClick
-    ExplicitLeft = 511
   end
   object DateTimePickerEmissao: TDateTimePicker
     Left = 112
@@ -195,7 +194,7 @@ object FrmCadPedido: TFrmCadPedido
     Left = 16
     Top = 263
     Width = 760
-    Height = 190
+    Height = 212
     Anchors = [akLeft, akTop, akRight, akBottom]
     DataSource = DataSourceProdutos
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -273,6 +272,16 @@ object FrmCadPedido: TFrmCadPedido
     Caption = '&InserirProduto'
     TabOrder = 4
     OnClick = BitBtnInserirProdutoClick
+  end
+  object StatusBar: TStatusBar
+    Left = 0
+    Top = 456
+    Width = 785
+    Height = 29
+    Panels = <
+      item
+        Width = 50
+      end>
   end
   object DataSourceProdutos: TDataSource
     DataSet = FDMemTableProdutos
