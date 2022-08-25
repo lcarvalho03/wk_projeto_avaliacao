@@ -18,8 +18,6 @@ implementation
 
 uses UDM, ULib, System.SysUtils, Data.DB;
 
-//uses System.SysUtils, UDM, ULib, FireDAC.Comp.Client;
-
 { TPedidoDAO }
 
 class function TPedidoDAO.Delete(pedido: TPedido): Boolean;
@@ -35,15 +33,14 @@ begin
                        'where (id = :pId)');
 
   lQueryDelete.Params.ParamByName('pId').AsInteger := pedido.id;
-
-  DM.FDConnection.StartTransaction;
+  lQueryDelete.Connection.StartTransaction;
 
   try
     lQueryDelete.ExecSQL;
-    DM.FDConnection.Commit;
+    lQueryDelete.Connection.Commit;
     Result := True;
   except
-    DM.FDConnection.Rollback;
+    lQueryDelete.Connection.Rollback;
     Result := False;
   end;
 
@@ -59,22 +56,20 @@ begin
   lQueryInsert.Close;
   lQueryInsert.SQL.Clear;
   lQueryInsert.SQL.Add('insert into pedidos (dt_emissao, id_cliente, valor_total) ' +
-                       'values (:pDtEmissao, :pIdCliente, :pValorTotal) returning id {into :id}');
+                       'values (:pDtEmissao, :pIdCliente, :pValorTotal) ');
 
   lQueryInsert.Params.ParamByName('pDtEmissao').AsDateTime := pedido.DtEmissao;
   lQueryInsert.Params.ParamByName('pIdCliente').AsInteger := pedido.Cliente.Id;
   lQueryInsert.Params.ParamByName('pValorTotal').Value := pedido.ValorTotal;
 
-  lQueryInsert.Params.ParamByName('id').DataType := TFieldType.ftInteger;
-  lQueryInsert.Params.ParamByName('id').ParamType := ptOutput;
-
-
   try
+    lQueryInsert.Connection.StartTransaction;
     lQueryInsert.Prepare;
-    lQueryInsert.OpenOrExecute;
+    lQueryInsert.ExecSQL;
 
 
-    lQueryInsert.Open('SELECT currval(pg_get_serial_sequence(''public.pedidos'', ''id''))');
+    //lQueryInsert.Open('SELECT currval(pg_get_serial_sequence(''public.pedidos'', ''id''))');
+    lQueryInsert.Open('SELECT LAST_INSERT_ID() FROM pedidos');
     pedido.Id := lQueryInsert.Fields[0].AsInteger;
 
     lQueryInsert.Close;
@@ -96,10 +91,10 @@ begin
       memTable.next;
     end;
 
-    DM.FDConnection.Commit;
+    lQueryInsert.Connection.Commit;
     Result := True;
   except
-    DM.FDConnection.Rollback;
+    lQueryInsert.Connection.Rollback;
     Result := False;
   end;
 

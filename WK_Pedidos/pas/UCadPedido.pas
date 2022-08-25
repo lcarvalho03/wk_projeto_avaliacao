@@ -95,8 +95,6 @@ begin
 
   if (lValidacaoPedido = '') then
   begin
-    DM.FDConnection.StartTransaction;
-
     if (TPedidoDAO.Persiste(oPedido, FDMemTableProdutos)) then
     begin
       Application.MessageBox(PWideChar('Pedido inserido com sucesso.'), 'Inserção de dados', MB_ICONEXCLAMATION);

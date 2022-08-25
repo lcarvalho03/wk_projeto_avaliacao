@@ -24,7 +24,8 @@ uses
 function CriaObjetoQuery(): TFDQuery;
 begin
   Result := TFDQuery.Create(nil);
-  Result.Connection := DM.FDConnection;
+  //Result.Connection := DM.FDConnectionPostgreSQL;
+  Result.Connection := DM.FDConnectionMySQL;
   Result.SQL.Clear;
 end;
 

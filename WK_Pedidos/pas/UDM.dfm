@@ -3,14 +3,14 @@ object DM: TDM
   Height = 576
   Width = 741
   object fdqQuery: TFDQuery
-    Connection = FDConnection
+    Connection = FDConnectionPostgreSQL
     SQL.Strings = (
       'select *'
       'from public.clientes')
     Left = 56
     Top = 128
   end
-  object FDConnection: TFDConnection
+  object FDConnectionPostgreSQL: TFDConnection
     Params.Strings = (
       'Database=DB_WK'
       'User_Name=postgres'
@@ -26,14 +26,16 @@ object DM: TDM
     Left = 176
     Top = 24
   end
-  object FDConnection2: TFDConnection
+  object FDConnectionMySQL: TFDConnection
     Params.Strings = (
-      'DriverID=MySQL'
       'Database=DB_WK'
-      'Password=123456'
+      'Password=root2022'
       'User_Name=root'
-      'CharacterSet=utf8')
+      'CharacterSet=utf8'
+      'Server=localhost'
+      'DriverID=MySQL')
     LoginPrompt = False
+    BeforeConnect = FDConnectionMySQLBeforeConnect
     Left = 136
     Top = 304
   end

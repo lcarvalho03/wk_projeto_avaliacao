@@ -19,20 +19,20 @@ type
     DBGrid1: TDBGrid;
     Label3: TLabel;
     FDQueryPedidos: TFDQuery;
-    FDQueryProdutos: TFDQuery;
+    FDQueryPedidosProdutos: TFDQuery;
     DataSourcePedidos: TDataSource;
     FDQueryPedidosid: TIntegerField;
     FDQueryPedidosid_cliente: TIntegerField;
     FDQueryPedidosnome: TWideStringField;
     FDQueryPedidosdt_emissao: TDateField;
     FDQueryPedidosvalor_total: TBCDField;
-    FDQueryProdutosid: TIntegerField;
-    FDQueryProdutosid_pedido: TIntegerField;
-    FDQueryProdutosid_produto: TIntegerField;
-    FDQueryProdutosdescricao: TWideStringField;
-    FDQueryProdutosqtd: TBCDField;
-    FDQueryProdutosvalor_unitario: TBCDField;
-    FDQueryProdutosvalor_total: TBCDField;
+    FDQueryPedidosProdutosid: TIntegerField;
+    FDQueryPedidosProdutosid_pedido: TIntegerField;
+    FDQueryPedidosProdutosid_produto: TIntegerField;
+    FDQueryPedidosProdutosdescricao: TWideStringField;
+    FDQueryPedidosProdutosqtd: TBCDField;
+    FDQueryPedidosProdutosvalor_unitario: TBCDField;
+    FDQueryPedidosProdutosvalor_total: TBCDField;
     Label4: TLabel;
     Bevel1: TBevel;
     BitBtnAdicionarPedido: TBitBtn;
@@ -85,6 +85,7 @@ begin
   else
     lWhere := '';
 
+  FDQueryPedidosProdutos.Close;
   FDQueryPedidos.Close;
   FDQueryPedidos.SQL.Clear;
   FDQueryPedidos.SQL.Add('select p.id, p.id_cliente, c.nome, p.dt_emissao, p.valor_total ' +
@@ -97,23 +98,23 @@ end;
 
 procedure TFrmMain.FDQueryPedidosAfterScroll(DataSet: TDataSet);
 begin
-  FDQueryProdutos.Close;
+  FDQueryPedidosProdutos.Close;
 
   if (not FDQueryPedidos.IsEmpty) then
   begin
-    FDQueryProdutos.SQL.Clear;
-    FDQueryProdutos.SQL.Add('select pp.id, pp.id_pedido, pp.id_produto, p.descricao, pp.qtd, pp.valor_unitario, pp.valor_total ' +
+    FDQueryPedidosProdutos.SQL.Clear;
+    FDQueryPedidosProdutos.SQL.Add('select pp.id, pp.id_pedido, pp.id_produto, p.descricao, pp.qtd, pp.valor_unitario, pp.valor_total ' +
                             'from pedidos_produtos pp ' +
                                  'inner join produtos p on (pp.id_produto = p.id) ' +
                             'where (pp.id_pedido = ' + FDQueryPedidos.FieldByName('id').AsString + ') ' +
                             ' order by p.descricao');
-    FDQueryProdutos.OpenOrExecute;
+    FDQueryPedidosProdutos.OpenOrExecute;
   end;
 end;
 
 procedure TFrmMain.FormDestroy(Sender: TObject);
 begin
-  //DestroiObjetosDoComboBox(ComboBoxCliente);
+  DestroiObjetosDoComboBox(ComboBoxCliente);
 end;
 
 procedure TFrmMain.FormShow(Sender: TObject);

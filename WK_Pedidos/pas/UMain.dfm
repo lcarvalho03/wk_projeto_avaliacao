@@ -242,13 +242,13 @@ object FrmMain: TFrmMain
     OnClick = BitBtnSairClick
   end
   object DataSourceProdutos: TDataSource
-    DataSet = FDQueryProdutos
+    DataSet = FDQueryPedidosProdutos
     Left = 240
     Top = 528
   end
   object FDQueryPedidos: TFDQuery
     AfterScroll = FDQueryPedidosAfterScroll
-    Connection = DM.FDConnection
+    Connection = DM.FDConnectionMySQL
     SQL.Strings = (
       'select p.id, p.id_cliente, c.nome, p.dt_emissao, p.valor_total '
       'from public.pedidos p '
@@ -288,8 +288,8 @@ object FrmMain: TFrmMain
       Size = 2
     end
   end
-  object FDQueryProdutos: TFDQuery
-    Connection = DM.FDConnection
+  object FDQueryPedidosProdutos: TFDQuery
+    Connection = DM.FDConnectionMySQL
     SQL.Strings = (
       
         'select pp.id, pp.id_pedido, pp.id_produto, p.descricao, pp.qtd, ' +
@@ -299,29 +299,29 @@ object FrmMain: TFrmMain
       'order by p.descricao')
     Left = 240
     Top = 472
-    object FDQueryProdutosid: TIntegerField
+    object FDQueryPedidosProdutosid: TIntegerField
       FieldName = 'id'
       Origin = 'id'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
-    object FDQueryProdutosid_pedido: TIntegerField
+    object FDQueryPedidosProdutosid_pedido: TIntegerField
       DisplayLabel = 'N'#250'mero pedido'
       FieldName = 'id_pedido'
       Origin = 'id_pedido'
     end
-    object FDQueryProdutosid_produto: TIntegerField
+    object FDQueryPedidosProdutosid_produto: TIntegerField
       DisplayLabel = 'C'#243'digo produto'
       FieldName = 'id_produto'
       Origin = 'id_produto'
     end
-    object FDQueryProdutosdescricao: TWideStringField
+    object FDQueryPedidosProdutosdescricao: TWideStringField
       AutoGenerateValue = arDefault
       DisplayLabel = 'Descri'#231#227'o do produto'
       FieldName = 'descricao'
       Origin = 'descricao'
       Size = 100
     end
-    object FDQueryProdutosqtd: TBCDField
+    object FDQueryPedidosProdutosqtd: TBCDField
       DisplayLabel = 'Qtd'
       FieldName = 'qtd'
       Origin = 'qtd'
@@ -329,7 +329,7 @@ object FrmMain: TFrmMain
       Precision = 12
       Size = 2
     end
-    object FDQueryProdutosvalor_unitario: TBCDField
+    object FDQueryPedidosProdutosvalor_unitario: TBCDField
       DisplayLabel = 'Valor unit'#225'rio'
       FieldName = 'valor_unitario'
       Origin = 'valor_unitario'
@@ -337,7 +337,7 @@ object FrmMain: TFrmMain
       Precision = 12
       Size = 2
     end
-    object FDQueryProdutosvalor_total: TBCDField
+    object FDQueryPedidosProdutosvalor_total: TBCDField
       DisplayLabel = 'Valor total'
       FieldName = 'valor_total'
       Origin = 'valor_total'

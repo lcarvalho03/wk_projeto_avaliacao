@@ -289,7 +289,7 @@ object FrmCadPedido: TFrmCadPedido
     Top = 371
   end
   object FDQueryProdutos: TFDQuery
-    Connection = DM.FDConnection
+    Connection = DM.FDConnectionPostgreSQL
     SQL.Strings = (
       
         'select pp.id, pp.id_pedido, pp.id_produto, p.descricao, pp.qtd, ' +

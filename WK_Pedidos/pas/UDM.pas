@@ -13,11 +13,12 @@ uses
 type
   TDM = class(TDataModule)
     fdqQuery: TFDQuery;
-    FDConnection: TFDConnection;
+    FDConnectionPostgreSQL: TFDConnection;
     FDPhysPgDriverLink1: TFDPhysPgDriverLink;
-    FDConnection2: TFDConnection;
+    FDConnectionMySQL: TFDConnection;
     FDPhysMySQLDriverLink2: TFDPhysMySQLDriverLink;
     procedure DataModuleCreate(Sender: TObject);
+    procedure FDConnectionMySQLBeforeConnect(Sender: TObject);
   private
     { Private declarations }
     function LerIniConexao(sSecao, sVariavel: string): string;
@@ -41,22 +42,21 @@ uses Vcl.Forms, Winapi.Windows, System.IniFiles, ULib;
 
 procedure TDM.DataModuleCreate(Sender: TObject);
 begin
-  //FDPhysPgDriverLink1.VendorHome := ExtractFilePath(Application.ExeName);
   FDPhysPgDriverLink1.VendorLib := ExtractFilePath(Application.ExeName) + 'libpq.dll';
   FDPhysPgDriverLink1.Release;
 
-  FDConnection.Connected := False;
+  FDConnectionPostgreSQL.Connected := False;
 
-  FDConnection.Params.Values['database'] := LerIniConexao('DatabaseName', 'BancoDeDados');
-  FDConnection.Params.Values['username'] := LerIniConexao('User', 'Usuario');
-  FDConnection.Params.Values['password'] := LerIniConexao('Password', 'Senha');
-  FDConnection.Params.Values['server']   := LerIniConexao('Server', 'Servidor');
-  FDConnection.Params.Values['port']     := LerIniConexao('Port', 'Porta');
+  FDConnectionPostgreSQL.Params.Values['database'] := LerIniConexao('DatabaseName', 'BancoDeDados');
+  FDConnectionPostgreSQL.Params.Values['username'] := LerIniConexao('User', 'Usuario');
+  FDConnectionPostgreSQL.Params.Values['password'] := LerIniConexao('Password', 'Senha');
+  FDConnectionPostgreSQL.Params.Values['server']   := LerIniConexao('Server', 'Servidor');
+  FDConnectionPostgreSQL.Params.Values['port']     := LerIniConexao('Port', 'Porta');
 
-  //FDConnection2.Connected := True;
+  FDConnectionMySQL.Connected := True;
 
   try
-    FDConnection.Connected := True;
+    FDConnectionPostgreSQL.Connected := True;
 
     if (not Assigned(listaDeClientes)) then
       listaDeClientes := obtemListaDeClientes();
@@ -70,6 +70,11 @@ begin
   end;
 
 
+end;
+
+procedure TDM.FDConnectionMySQLBeforeConnect(Sender: TObject);
+begin
+  FDPhysMySQLDriverLink2.VendorLib := ExtractFilePath(Application.ExeName) + 'libmysql.dll';
 end;
 
 function TDM.LerIniConexao(sSecao, sVariavel: string): string;
