@@ -122,7 +122,7 @@ begin
     FDMemTableProdutos.Post;
 
     NumberBoxPedidoValorTotal.Value := (NumberBoxPedidoValorTotal.Value + NumberBoxProdutoValorTotal.Value);
-    StatusBar.Panels[0].Text := '  Valor Total do Pedido: ' + NumberBoxPedidoValorTotal.CurrencyString + ' ' + FormatFloat('#,##0.00', NumberBoxPedidoValorTotal.Value);
+    StatusBar.Panels[2].Text := '  Valor Total do Pedido: ' + NumberBoxPedidoValorTotal.CurrencyString + ' ' + FormatFloat('#,##0.00', NumberBoxPedidoValorTotal.Value);
     ComboBoxProduto.ItemIndex := 0;
     NumberBoxQtdProduto.Value := 0;
     ComboBoxProduto.SetFocus;
@@ -149,7 +149,6 @@ begin
   else
     NumberBoxValorUnitario.Value := 0.00;
 
-  //CalculaValorTotalProduto(NumberBoxQtdProduto.Value, NumberBoxValorUnitario.Value);
   NumberBoxQtdProdutoChange(Sender);
   NumberBoxQtdProduto.SetFocus;
 end;
@@ -165,8 +164,6 @@ begin
   montaComboboxCliente(oCliente, ComboBoxCliente, DM.listaDeClientes);
   montaComboboxProduto(oProduto, ComboBoxProduto, DM.listaDeProdutos);
   oPedido := TPedido.Create(0, Now, TCliente(ComboBoxCliente.Items.Objects[0]), 0.00);
-  //FDQueryProdutos.Close;
-  //FDQueryProdutos := oPedido.Produtos;
   FDMemTableProdutos.Open;
 end;
 

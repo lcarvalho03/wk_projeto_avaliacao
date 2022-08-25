@@ -3,7 +3,7 @@ object FrmCadPedido: TFrmCadPedido
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'Cadastro de Pedido'
-  ClientHeight = 485
+  ClientHeight = 533
   ClientWidth = 785
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,7 +16,7 @@ object FrmCadPedido: TFrmCadPedido
   OnShow = FormShow
   DesignSize = (
     785
-    485)
+    533)
   TextHeight = 15
   object Label1: TLabel
     Left = 16
@@ -194,7 +194,7 @@ object FrmCadPedido: TFrmCadPedido
     Left = 16
     Top = 263
     Width = 760
-    Height = 212
+    Height = 236
     Anchors = [akLeft, akTop, akRight, akBottom]
     DataSource = DataSourceProdutos
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -275,13 +275,26 @@ object FrmCadPedido: TFrmCadPedido
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 456
+    Top = 513
     Width = 785
-    Height = 29
+    Height = 20
     Panels = <
       item
+        Text = 
+          'Software para avalia'#231#227'o do profissional Leonardo Freitas de Carv' +
+          'alho'
+        Width = 450
+      end
+      item
+        Text = 'Vers'#227'o 2.1.1'
+        Width = 100
+      end
+      item
+        Alignment = taRightJustify
+        Text = '  Valor Total do Pedido: 0,00'
         Width = 50
       end>
+    ExplicitTop = 504
   end
   object DataSourceProdutos: TDataSource
     DataSet = FDMemTableProdutos

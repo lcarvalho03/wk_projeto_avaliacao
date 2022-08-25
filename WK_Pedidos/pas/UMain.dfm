@@ -2,7 +2,7 @@ object FrmMain: TFrmMain
   Left = 0
   Top = 0
   Caption = 'Consulta de Pedidos'
-  ClientHeight = 647
+  ClientHeight = 650
   ClientWidth = 999
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,7 +15,7 @@ object FrmMain: TFrmMain
   OnShow = FormShow
   DesignSize = (
     999
-    647)
+    650)
   TextHeight = 15
   object Label1: TLabel
     Left = 16
@@ -143,7 +143,7 @@ object FrmMain: TFrmMain
     Left = 142
     Top = 408
     Width = 849
-    Height = 224
+    Height = 214
     Anchors = [akLeft, akTop, akRight, akBottom]
     DataSource = DataSourceProdutos
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -240,6 +240,24 @@ object FrmMain: TFrmMain
     Caption = '&Sair'
     TabOrder = 4
     OnClick = BitBtnSairClick
+  end
+  object StatusBar1: TStatusBar
+    Left = 0
+    Top = 630
+    Width = 999
+    Height = 20
+    Panels = <
+      item
+        Text = 
+          'Software para avalia'#231#227'o do profissional Leonardo Freitas de Carv' +
+          'alho'
+        Width = 850
+      end
+      item
+        Text = 'Vers'#227'o 2.1.1'
+        Width = 50
+      end>
+    ExplicitTop = 631
   end
   object DataSourceProdutos: TDataSource
     DataSet = FDQueryPedidosProdutos

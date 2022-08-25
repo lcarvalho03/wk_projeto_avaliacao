@@ -7,7 +7,7 @@ uses
   Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, UTCliente, UTPedido, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Buttons, System.ImageList,
-  Vcl.ImgList, Vcl.ExtCtrls;
+  Vcl.ImgList, Vcl.ExtCtrls, Vcl.ComCtrls;
 
 type
   TFrmMain = class(TForm)
@@ -37,6 +37,7 @@ type
     Bevel1: TBevel;
     BitBtnAdicionarPedido: TBitBtn;
     BitBtnSair: TBitBtn;
+    StatusBar1: TStatusBar;
     procedure FormShow(Sender: TObject);
     procedure FDQueryPedidosAfterScroll(DataSet: TDataSet);
     procedure ComboBoxClienteSelect(Sender: TObject);
@@ -114,7 +115,7 @@ end;
 
 procedure TFrmMain.FormDestroy(Sender: TObject);
 begin
-  DestroiObjetosDoComboBox(ComboBoxCliente);
+  //DestroiObjetosDoComboBox(ComboBoxCliente);
 end;
 
 procedure TFrmMain.FormShow(Sender: TObject);
